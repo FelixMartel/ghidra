@@ -53,6 +53,13 @@ else {
  ****************************************************************************/
 model {
 
+	toolChains {
+		gcc(Gcc) {
+			target("linux_aarch64") {
+				cppCompiler.executable = "/usr/bin/gcc"
+			}
+		}
+	}
 	// define the platforms that we support in ghidra
 	platforms {
 		win32 {
@@ -66,6 +73,10 @@ model {
 		linux64 {
 			architecture 'x86_64'
 			operatingSystem 'linux'
+		}
+		linux_aarch64 {
+			architecture "amd64"
+			operatingSystem "linux"
 		}
 		osx64 {
 			architecture 'x86_64'

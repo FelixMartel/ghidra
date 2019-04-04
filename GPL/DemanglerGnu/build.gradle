@@ -63,6 +63,7 @@ model {
 		demangler_gnu(NativeExecutableSpec) {
 			targetPlatform "win64"
 			targetPlatform "linux64"
+			targetPlatform "linux_aarch64"
 			targetPlatform "osx64"
 			sources {
 				c {
