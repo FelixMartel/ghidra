@@ -231,6 +231,20 @@ task buildDecompilerDocumentationHtml(type: Exec) {
  */
 model {
 	
+	toolChains {
+		gcc(Gcc) {
+			target("linux_aarch64") {
+				cppCompiler.executable = "/usr/bin/gcc"
+			}
+		}
+	}
+	platforms {
+		linux_aarch64 {
+			architecture "amd64"
+			operatingSystem "linux"
+		}
+	}
+
 	// Define the source files that are compiled and linked to become the decompiler.
 	// The decompiler source is a bit weird in that all the cpp and headers all live in
 	// the same directory with other files that are not used by the decompiler.
@@ -244,6 +258,7 @@ model {
 			// these tell gradle for which platforms to build a decompiler executable.
 			targetPlatform "win64"
 			targetPlatform "linux64"
+			targetPlatform "linux_aarch64"
 			targetPlatform "osx64"
 			sources {
 				cpp {
@@ -341,6 +356,7 @@ model {
 		sleigh(NativeExecutableSpec) {
 			targetPlatform "win64"
 			targetPlatform "linux64"
+			targetPlatform "linux_aarch64"
 			targetPlatform "osx64"
 			sources {
 				cpp {
